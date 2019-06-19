@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"> 
+		<meta HTTP-EQUIV="pragma" CONTENT="no-cache">
+		<meta HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+		<meta HTTP-EQUIV="expires" CONTENT="0">
+		<title>Image Caption</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script> 
+<style>
+    .img-div img {  
+        width:200px;  
+        height:200px;  
+        float: left;  
+    }  
+    .img-div {  
+        float: left;  
+    }  
+    .drop-left,.drop-right {  
+        width: 20px;  
+        height: 200px;  
+        float: left;  
+    }  
+</style>
+<style type="text/css">
+.sen{
+	font: 24px/1.5 Helvetica Neue, tahoma,arial,"Hiragino Sans GB",Microsoft Yahei;
+	margin-top: 35px;
+		
+}
+.img{
+	font: 24px/1.5 Helvetica Neue, tahoma,arial,"Hiragino Sans GB",Microsoft Yahei;
+	margin-top: 35px;
+	text-align: center;	
+}
+.bot{
+	font: 16px/1.5 Helvetica Neue, tahoma,arial,"Hiragino Sans GB",Microsoft Yahei;
+	text-align: center;
+	color: #63318F;
+	border-radius: 5px;
+}
+
+</style>
+		<!-- 引入 G6 文件 -->
+	<script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-2.0.5/build/g6.js"></script>
+</head>
+<body>
+	<form method="post" enctype="multipart/form-data" class="sen"> 
+		<fieldset>
+		<legend>上传图片</legend>
+		<input class="bot" type="file" name="image" multiple=""> 
+		<input class="bot" type="submit" name="upload" value="上传图片">		
+		<input class="bot" type="submit" name="runmodel" value="生成描述"> 
+		<input class="bot" type="submit" name="showatt" value="显示attention"> 
+		</fieldset>
+	</form> 
+		<!-- 创建图容器 -->
+	<div id="mountNode"></div>
+	<script>
+		const data = {
+			nodes: [{
+				id: 'node1',
+				x: 0,
+				y: 0
+				},{
+				id: 'node2',
+				x: 300,
+				y: 200
+			}],
+			edges: [{
+				id: 'edge1',
+				target: 'node2',
+				source: 'node1'
+			}]
+			};
+		const graph = new G6.Graph({
+			container: 'mountNode',
+			width: 500,
+			height: 500
+			});
+		graph.read(data);
+	</script>
+</body>
+</html>
+
